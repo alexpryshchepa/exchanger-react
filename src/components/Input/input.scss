@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.root {
+  padding: 10px 0;
+}
+
+.label {
+  
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid black;
+  margin-top: 10px;
+  height: 45px;
+  background: whitesmoke;
+  padding: 0 20px;
+  color: $font-color-dark;
+  &::-webkit-input-placeholder {
+    color: $font-color-dark;
+  }
+  &::-moz-placeholder {
+    color: $font-color-dark;
+  }
+  &:-moz-placeholder {
+    color: $font-color-dark;
+  }
+  &:-ms-input-placeholder {
+    color: $font-color-dark;
+  }
+  &:focus {
+    &::-webkit-input-placeholder {
+      color: $font-color-dark;
+    }
+    &::-moz-placeholder {
+      color: $font-color-dark;
+    }
+    &:-moz-placeholder {
+      color: $font-color-dark;
+    }
+    &:-ms-input-placeholder {
+      color: $font-color-dark;
+    }
+  }
+}
+
