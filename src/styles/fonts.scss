@@ -1,0 +1,56 @@
+@import 'variables';
+
+:global {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    color: $font-color-primary;
+    font-family: $font-family-primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+    line-height: $font-line-height-base;
+  }
+
+  input,
+  textarea,
+  button,
+  select {
+    color: $font-color-primary;
+    font-family: $font-family-primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+  }
+
+  input,
+  textarea {
+    &::-webkit-input-placeholder {
+      color: $font-color-primary;
+    }
+    &::-moz-placeholder {
+      color: $font-color-primary;
+    }
+    &:-moz-placeholder {
+      color: $font-color-primary;
+    }
+    &:-ms-input-placeholder {
+      color: $font-color-primary;
+    }
+    &:focus {
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+      &::-moz-placeholder {
+        color: transparent;
+      }
+      &:-moz-placeholder {
+        color: transparent;
+      }
+      &:-ms-input-placeholder {
+        color: transparent;
+      }
+    }
+  }
+}

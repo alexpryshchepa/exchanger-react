@@ -1,47 +1,53 @@
 @import '../../styles/variables';
 
 .root {
-  padding: 10px 0;
-}
-
-.label {
-  
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .input {
-  display: block;
+  flex: 1 1;
   width: 100%;
-  border: 1px solid black;
-  margin-top: 10px;
-  height: 45px;
-  background: whitesmoke;
-  padding: 0 20px;
-  color: $font-color-dark;
+  background: none;
+  text-align: right;
+  font-size: 52px;
+  line-height: 52px;
+  height: 52px;
+  color: $font-color-primary;
   &::-webkit-input-placeholder {
-    color: $font-color-dark;
+    color: $font-color-primary;
   }
   &::-moz-placeholder {
-    color: $font-color-dark;
+    color: $font-color-primary;
   }
   &:-moz-placeholder {
-    color: $font-color-dark;
+    color: $font-color-primary;
   }
   &:-ms-input-placeholder {
-    color: $font-color-dark;
+    color: $font-color-primary;
   }
   &:focus {
     &::-webkit-input-placeholder {
-      color: $font-color-dark;
+      color: $font-color-primary;
     }
     &::-moz-placeholder {
-      color: $font-color-dark;
+      color: $font-color-primary;
     }
     &:-moz-placeholder {
-      color: $font-color-dark;
+      color: $font-color-primary;
     }
     &:-ms-input-placeholder {
-      color: $font-color-dark;
+      color: $font-color-primary;
     }
   }
+}
+
+.button {
+  background: none;
+  font-size: 26px;
+  line-height: 26px;
+  height: 26px;
+  margin-left: 10px;
 }
 

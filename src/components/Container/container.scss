@@ -1,0 +1,15 @@
+.root {
+  position: relative;
+  background-image: linear-gradient(to bottom, #252F39, #2F465A);
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  height: 100%;
+  padding: 30px;
+  overflow-y: auto;
+  & > div {
+    height: auto;
+  }
+}

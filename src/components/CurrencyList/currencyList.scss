@@ -1,0 +1,31 @@
+.root {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, #252F39, #2F465A);
+  height: 100%;
+  overflow-y: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: translateY(100%);
+  transition: transform .4s ease-out;
+}
+
+.item {
+  border-radius: 10px;
+  background: rgba(#fff, .05);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

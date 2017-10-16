@@ -1,1 +1,3 @@
+export const GET_DATE = 'GET_DATE'
+export const GET_PRESETS = 'GET_PRESETS'
 export const FETCH_RATES_SUCCESS = 'FETCH_RATES_SUCCESS'

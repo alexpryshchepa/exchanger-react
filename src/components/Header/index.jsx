@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import styles from './header.scss';
 
-export default class Header extends React.Component {
+export default class Header extends Component {
   render() {
     return ( 
       <header className={styles.root}>
-        <h2>Header</h2>
-        <span>Subtitle here</span>
+        {this.props.date}
       </header>
     )
   }

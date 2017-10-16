@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+
+.root {
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.button {
+  margin: 30px 10px 0 10px;
+  background: none;
+  & > [data-svg=arrows] {
+    width: 28px;
+    height: 28px;
+    
+    [data-svg-layer=arrow-down] {
+      fill: $font-color-secondary;
+    }
+    [data-svg-layer=arrow-up] {
+      fill: $font-color-tretiary;
+    }
+  }
+}

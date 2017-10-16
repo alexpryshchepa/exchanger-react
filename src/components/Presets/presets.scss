@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+
+.root {
+  text-align: center;
+  height: auto;
+}
+
+.title {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.item {
+  border-radius: 10px;
+  background: rgba(#fff, .05);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  & > span {
+    font-size: 26px;
+    &:first-of-type {
+      color: $font-color-secondary;
+    }
+    &:last-of-type {
+      color: $font-color-tretiary;
+    }
+  }
+  & > [data-svg=arrows] {
+    width: 17px;
+    height: 17px;
+    margin: 0 18px;
+    [data-svg-layer=arrow-left] {
+      fill: $font-color-secondary;
+    }
+    [data-svg-layer=arrow-right] {
+      fill: $font-color-tretiary;
+    }
+  }
+}

@@ -1,16 +1,20 @@
 // Fonts 
-$font-family-base: 'Roboto', sans-serif;
+$font-family-primary: 'Quicksand', sans-serif;
+$font-family-secondary: 'Teko', sans-serif;
 
-$font-size-base: 14px;
+$font-size-base: 20px;
 
-$font-color-base: #fff;
-$font-color-dark: #161410;
-$font-color-active: #882926;
-$font-color-error: #882926;
+$font-color-primary: #95989A;
+$font-color-secondary: #D1A34B;
+$font-color-tretiary: #D14B4B;
 
 $font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
-$font-weight-base: $font-weight-bold;
+$font-weight-light: 300;
+$font-weight-base: $font-weight-regular;
 
 $font-line-height-base: 1;
+
+// Colors
+$color-primary: #95989A;
+$color-secondary: #D1A34B;
+$color-tretiary: #D14B4B;
