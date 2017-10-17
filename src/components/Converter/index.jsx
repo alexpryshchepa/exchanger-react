@@ -21,9 +21,9 @@ export default function Converter (props) {
         </svg>
       </button>
       <Input 
-        currency={props.currency}
+        currency={props.currencyTo}
         openCurrencyList={props.openCurrencyList}
-        value={props.value}
+        value={props.valueTo}
         readonly />
     </main>
   )

@@ -3,7 +3,7 @@ const initialState = {
   names: [],
 };
 
-export default function cureencies (state = initialState, action) {
+export default function currencies (state = initialState, action) {
   switch(action.type) {
     case 'FETCH_RATES_SUCCESS':
       return {

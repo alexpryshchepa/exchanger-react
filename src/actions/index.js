@@ -7,3 +7,4 @@ export const getRates = () => dispatch => GetRates(function (data, names) {
 }, function () {
   console.log('error');
 })
+export const invertConverter = state => ({ type: types.INVERT_CONVERTER, inverted: state })
