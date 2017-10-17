@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
-import ReactDom from 'react-dom';
+import React from 'react';
 import styles from './loader.scss';
 
-export default class Loader extends Component {
-  render() {
-    return ( 
-      <div className={styles.root}>
-        <div className={styles.loader}>
-          <div></div>
-        </div>
+export default function Loader (props) {
+  return ( 
+    <div className={styles.root}>
+      <div className={styles.loader}>
+        <div></div>
       </div>
-    )
-  }
+    </div>
+  )
 }

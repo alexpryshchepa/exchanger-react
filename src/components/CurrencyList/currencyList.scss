@@ -9,11 +9,6 @@
   height: 100%;
   overflow-y: auto;
   padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  transform: translateY(100%);
-  transition: transform .4s ease-out;
 }
 
 .item {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 import Container from 'components/Container';
@@ -16,12 +15,10 @@ class App extends Component {
     this.state = {
       currencyListVisibility: false,
     }
-    this.openCurrencyList = this.openCurrencyList.bind(this)
   }
   
   componentWillMount () {
     this.props.onSetDate();
-    this.props.onSetPresets();
   }
   
   componentDidMount () {
@@ -34,6 +31,12 @@ class App extends Component {
     })
   }
   
+  changeCurrency () {
+    this.setState({
+      currencyListVisibility: !this.state.currencyListVisibility
+    })
+  }
+  
   render () {
     return (
       this.props.rates ? (
@@ -41,12 +44,13 @@ class App extends Component {
           children={
             <div>
               <Header date={this.props.date} />
-              <Exchanger selectCurrency={this.openCurrencyList} />
+              <Exchanger openCurrencyList={this.openCurrencyList.bind(this)} />
               <Presets presets={this.props.presets} />
             </div>
           } 
-          currencies={this.props.currencies}
-          currencyListVisibility={this.state.currencyListVisibility} />
+          currencies={this.props.names}
+          currencyListVisibility={this.state.currencyListVisibility}
+          changeCurrency={this.changeCurrency.bind(this)} />
       ) : (
         <Loader />
       )
@@ -56,9 +60,9 @@ class App extends Component {
 
 export default connect(
   state => ({
-    date: state.date.date,
-    presets: state.presets.presets,
-    currencies: ['USD', 'RUB', 'UAH', 'GBP'],
+    date: state.date,
+    presets: state.presets,
+    names: state.currencies.names,
     rates: state.currencies.rates,
   }),
   dispatch => ({
@@ -69,11 +73,8 @@ export default connect(
       
       dispatch(actions.getDate(months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear()))
     },
-    onSetPresets: function () {
-      dispatch(actions.getPresets());
-    },
     onGetRates: () => {
       dispatch(actions.getRates());
-    }
+    },
   })
 )(App);

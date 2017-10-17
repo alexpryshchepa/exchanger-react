@@ -2,7 +2,7 @@ import React from 'react'
 
 const API_URL = 'http://api.fixer.io/latest?base=USD'
 
-export default function GetRates(cb) {
+export default function GetRates(cb, error) {
   let url = API_URL;
   fetch(url)
     .then(response => {
@@ -10,9 +10,13 @@ export default function GetRates(cb) {
         let data = response.json();
         return data;
       } else {
-        alert('We cannot resolve currency rates, sorry!');
+        error();
       }
     }).then(function (data) {
-      cb(data);
+      let names = [];
+      for (let key in data.rates) {
+        names.push(String(key))
+      }
+      cb(data, names);
     })
 }

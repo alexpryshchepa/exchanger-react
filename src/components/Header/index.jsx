@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
+import PropTypes from 'prop-types';
 import styles from './header.scss';
 
-export default class Header extends Component {
-  render() {
-    return ( 
-      <header className={styles.root}>
-        {this.props.date}
-      </header>
-    )
-  }
+export default function Header (props) {
+  return ( 
+    <header className={styles.root}>
+      {props.date}
+    </header>
+  )
+}
+
+Header.propTypes = {
+  date: PropTypes.string,
 }
