@@ -8,3 +8,5 @@ export const getRates = () => dispatch => GetRates(function (data, names) {
   console.log('error');
 })
 export const invertConverter = state => ({ type: types.INVERT_CONVERTER, inverted: state })
+export const changeCurrencyBase = currency => ({ type: types.CHANGE_CURRENCY_BASE, currencyBase: currency })
+export const changeCurrencyTo = currency => ({ type: types.CHANGE_CURRENCY_TO, currencyTo: currency })

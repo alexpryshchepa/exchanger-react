@@ -31,10 +31,12 @@ class App extends Component {
     })
   }
   
-  changeCurrency () {
+  changeCurrency (e) {
     this.setState({
       currencyListVisibility: !this.state.currencyListVisibility
     })
+    
+    this.props.onChangeCurrency(e.target.innerText);
   }
   
   render () {
@@ -66,7 +68,7 @@ export default connect(
     rates: state.currencies.rates,
   }),
   dispatch => ({
-    onSetDate: function () {
+    onSetDate: () => {
       const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
       
       let date = new Date();
@@ -76,5 +78,12 @@ export default connect(
     onGetRates: () => {
       dispatch(actions.getRates());
     },
+    onChangeCurrency: (currency) => {
+      if (false) {
+        dispatch(actions.changeCurrencyBase(currency))
+      } else {
+        dispatch(actions.changeCurrencyTo(currency))
+      }
+    }
   })
 )(App);
