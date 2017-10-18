@@ -10,21 +10,21 @@ class Exchanger extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      valueBase: 1,
-      valueTo: Math.round(this.props.rates.RUB * 100) / 100,
+      valueBase: this.props.valueBase,
+      valueTo: Math.round(this.props.valueTo * 100) / 100,
     }
   }
   
   handleExchange (e) {
     this.setState({
       valueBase: e.target.value,
-      valueTo: Math.round((e.target.value * this.props.rates.RUB) * 100) / 100,
+      valueTo: Math.round((e.target.value * this.props.valueTo) * 100) / 100,
     })
   }
 
   handleExchangeInverted (e) {
     this.setState({
-      valueBase: Math.round((e.target.value / this.props.rates.RUB) * 100) / 100,
+      valueBase: Math.round((e.target.value / this.props.valueTo) * 100) / 100,
       valueTo: e.target.value,
     })
   }
@@ -44,11 +44,11 @@ class Exchanger extends Component {
           ? this.props.currencyBase
           : this.props.currencyTo}
         valueBase={this.props.inverted
-          ? this.state.valueTo
+          ? this.props.valueTo
           : this.state.valueBase}
         valueTo={this.props.inverted 
           ? this.state.valueBase 
-          : this.state.valueTo}
+          : this.props.valueTo}
         onChange={this.props.inverted 
           ? this.handleExchangeInverted.bind(this)
           : this.handleExchange.bind(this)}

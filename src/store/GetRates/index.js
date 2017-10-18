@@ -1,9 +1,7 @@
 import React from 'react'
 
-const API_URL = 'http://api.fixer.io/latest?base=USD'
-
-export default function GetRates(cb, error) {
-  let url = API_URL;
+export default function GetRates(base, cb, error) {
+  let url = 'http://api.fixer.io/latest?base=' + base;
   fetch(url)
     .then(response => {
       if (response.status === 200) {

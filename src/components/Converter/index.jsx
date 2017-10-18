@@ -11,7 +11,8 @@ export default function Converter (props) {
         currency={props.currencyBase}
         openCurrencyList={props.openCurrencyList}
         value={props.valueBase}
-        onChange={props.onChange} />
+        onChange={props.onChange}
+        meaning='currencyBase' />
       <button className={styles.button} onClick={props.onReverse}>
         <svg data-svg='arrows' xmlns="http://www.w3.org/2000/svg" viewBox="255 154 28 28">
           <g transform="translate(312.296 154) rotate(90)">
@@ -24,7 +25,8 @@ export default function Converter (props) {
         currency={props.currencyTo}
         openCurrencyList={props.openCurrencyList}
         value={props.valueTo}
-        readonly />
+        readonly
+        meaning='currencyTo' />
     </main>
   )
 }

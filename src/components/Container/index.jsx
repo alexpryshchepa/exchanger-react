@@ -14,7 +14,8 @@ export default function Container (props) {
         props.currencyListVisibility 
           ? <CurrencyList 
               currencies={props.currencies}
-              changeCurrency={props.changeCurrency} />
+              changeCurrency={props.changeCurrency}
+              currencyListMeaning={props.currencyListMeaning} />
           : false
       }
     </div>

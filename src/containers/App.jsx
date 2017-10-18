@@ -14,6 +14,7 @@ class App extends Component {
     super(props)
     this.state = {
       currencyListVisibility: false,
+      currencyListMeaning: '',
     }
   }
   
@@ -25,9 +26,10 @@ class App extends Component {
     this.props.onGetRates();
   }
   
-  openCurrencyList () {
+  openCurrencyList (e) {
     this.setState({
-      currencyListVisibility: !this.state.currencyListVisibility
+      currencyListVisibility: !this.state.currencyListVisibility,
+      currencyListMeaning: e.target.dataset.meaning,
     })
   }
   
@@ -36,7 +38,13 @@ class App extends Component {
       currencyListVisibility: !this.state.currencyListVisibility
     })
     
-    this.props.onChangeCurrency(e.target.innerText);
+    let value;
+    
+    for (let key in this.props.rates) {
+      if (e.target.innerText === key) value = this.props.rates[key]
+    }
+    
+    this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, value);
   }
   
   render () {
@@ -52,6 +60,7 @@ class App extends Component {
           } 
           currencies={this.props.names}
           currencyListVisibility={this.state.currencyListVisibility}
+          currencyListMeaning={this.state.currencyListMeaning}
           changeCurrency={this.changeCurrency.bind(this)} />
       ) : (
         <Loader />
@@ -76,13 +85,16 @@ export default connect(
       dispatch(actions.getDate(months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear()))
     },
     onGetRates: () => {
-      dispatch(actions.getRates());
+      dispatch(actions.getRates('USD'));
     },
-    onChangeCurrency: (currency) => {
-      if (false) {
-        dispatch(actions.changeCurrencyBase(currency))
-      } else {
-        dispatch(actions.changeCurrencyTo(currency))
+    onChangeCurrency: (meaning, currency, value) => {
+      if (meaning === 'currencyBase') {
+        dispatch(actions.changeCurrencyBase(currency));
+        dispatch(actions.clearRates());
+        dispatch(actions.invertConverter(false))
+        dispatch(actions.getRates(currency));
+      } else if (meaning === 'currencyTo') {
+        dispatch(actions.changeCurrencyTo(currency, value))
       }
     }
   })

@@ -11,7 +11,8 @@ export default function CurrencyList (props) {
             <button
               className={styles.item}
               key={index}
-              onClick={props.changeCurrency} >
+              onClick={props.changeCurrency}
+              data-meaning={props.currencyListMeaning} >
               {item}
             </button>
           )

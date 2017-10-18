@@ -13,6 +13,7 @@ export default function Input (props) {
         readOnly={props.readonly ? true : false} />
       <button 
         className={styles.button}
+        data-meaning={props.meaning}
         onClick={props.openCurrencyList}
         >{props.currency}</button>
     </div>
