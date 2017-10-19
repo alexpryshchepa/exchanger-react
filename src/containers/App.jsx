@@ -44,7 +44,7 @@ class App extends Component {
       if (e.target.innerText === key) value = this.props.rates[key]
     }
     
-    this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, value);
+    this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, this.props.currencyTo, value);
   }
   
   render () {
@@ -73,8 +73,9 @@ export default connect(
   state => ({
     date: state.date,
     presets: state.presets,
-    names: state.currencies.names,
-    rates: state.currencies.rates,
+    names: state.converter.names,
+    rates: state.converter.rates,
+    currencyTo: state.converter.currencyTo,
   }),
   dispatch => ({
     onSetDate: () => {
@@ -84,15 +85,15 @@ export default connect(
       
       dispatch(actions.getDate(months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear()))
     },
-    onGetRates: () => {
-      dispatch(actions.getRates('USD'));
+    onGetRates: value => {
+      dispatch(actions.getRates('USD', 'RUB'));
     },
-    onChangeCurrency: (meaning, currency, value) => {
+    onChangeCurrency: (meaning, currency, currencyTo, value) => {
       if (meaning === 'currencyBase') {
         dispatch(actions.changeCurrencyBase(currency));
         dispatch(actions.clearRates());
         dispatch(actions.invertConverter(false))
-        dispatch(actions.getRates(currency));
+        dispatch(actions.getRates(currency, currencyTo));
       } else if (meaning === 'currencyTo') {
         dispatch(actions.changeCurrencyTo(currency, value))
       }

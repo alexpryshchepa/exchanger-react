@@ -1,13 +1,30 @@
 const initialState = {
+  rates: '',
+  names: [],
   inverted: false,
-  currencyBase: 'USD',
-  currencyTo: 'RUB',
+  currencyBase: '',
+  currencyTo: '',
   valueBase: 1,
-  valueTo: 57.17,
+  valueTo: 1,
 };
 
 export default function converter (state = initialState, action) {
   switch(action.type) {
+    case 'CLEAR_RATES':
+      return {
+        ...state,
+        rates: action.rates,
+      }
+      break
+    case 'FETCH_RATES_SUCCESS':
+      return {
+        ...state,
+        rates: action.rates,
+        names: action.names,
+        currencyBase: action.currencyBase,
+        valueBase: action.valueBase,
+      }
+      break
     case 'CHANGE_CURRENCY_BASE':
       return {
         ...state,

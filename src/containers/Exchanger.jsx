@@ -45,9 +45,9 @@ class Exchanger extends Component {
           : this.props.currencyTo}
         valueBase={this.props.inverted
           ? this.props.valueTo
-          : this.state.valueBase}
+          : this.props.valueBase}
         valueTo={this.props.inverted 
-          ? this.state.valueBase 
+          ? this.props.valueBase 
           : this.props.valueTo}
         onChange={this.props.inverted 
           ? this.handleExchangeInverted.bind(this)
@@ -61,7 +61,7 @@ class Exchanger extends Component {
 
 export default connect(
   state => ({
-    rates: state.currencies.rates,
+    rates: state.converter.rates,
     inverted: state.converter.inverted,
     currencyBase: state.converter.currencyBase,
     currencyTo: state.converter.currencyTo,
