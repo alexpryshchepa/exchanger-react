@@ -27,9 +27,13 @@ export const getRates = (currencyBase, currencyTo) => dispatch => GetRates(curre
 }, function () {
   console.log('error');
 })
-export const invertConverter = state => ({
+export const invertConverter = (state, currencyBase, currencyTo, valueBase, valueTo) => ({
   type: types.INVERT_CONVERTER,
-  inverted: state
+  inverted: state,
+  currencyBase: currencyBase,
+  currencyTo: currencyTo,
+  valueBase: valueBase,
+  valueTo: valueTo,
 })
 export const changeCurrencyBase = currency => ({
   type: types.CHANGE_CURRENCY_BASE,
@@ -39,4 +43,9 @@ export const changeCurrencyTo = (currency, value) => ({
   type: types.CHANGE_CURRENCY_TO,
   currencyTo: currency,
   valueTo: Math.round(value * 100) / 100,
+})
+export const exchange = (valueBase, valueTo) => ({
+  type: types.EXCHANGE,
+  valueBase: valueBase,
+  valueTo: Math.round(valueTo * 100) / 100,
 })

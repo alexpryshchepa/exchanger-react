@@ -1,11 +1,7 @@
 const initialState = [
   {
-    currFrom: 'USD',
-    currTo: 'UAH',
-  },
-  {
-    currFrom: 'UAH',
-    currTo: 'RUB',
+    currFrom: 'EUR',
+    currTo: 'USD',
   },
   {
     currFrom: 'GBP',
@@ -13,7 +9,11 @@ const initialState = [
   },
   {
     currFrom: 'EUR',
-    currTo: 'UAH',
+    currTo: 'RUB',
+  },
+  {
+    currFrom: 'RUB',
+    currTo: 'GBP',
   },
 ]
 

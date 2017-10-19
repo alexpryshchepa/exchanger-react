@@ -7,51 +7,31 @@ import Input from 'components/Input';
 import * as actions from 'actions';
 
 class Exchanger extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      valueBase: this.props.valueBase,
-      valueTo: Math.round(this.props.valueTo * 100) / 100,
-    }
-  }
-  
   handleExchange (e) {
-    this.setState({
-      valueBase: e.target.value,
-      valueTo: Math.round((e.target.value * this.props.valueTo) * 100) / 100,
-    })
-  }
-
-  handleExchangeInverted (e) {
-    this.setState({
-      valueBase: Math.round((e.target.value / this.props.valueTo) * 100) / 100,
-      valueTo: e.target.value,
-    })
+    let valueBase, valueTo;
+    if (this.props.inverted) {
+      valueBase = Number(e.target.value);
+      valueTo = Math.round((e.target.value / this.props.rates[this.props.currencyBase]) * 100) / 100;
+    } else {
+      valueBase = Number(e.target.value);
+      valueTo = Math.round((e.target.value * this.props.rates[this.props.currencyTo]) * 100) / 100;
+    }
+    this.props.onHandleExchange(valueBase, valueTo)
   }
   
   handleInvert () {
     let currentState = this.props.inverted;
-    this.props.onHandleInvert(!currentState);
+    this.props.onHandleInvert(!currentState, this.props.currencyBase, this.props.currencyTo, this.props.valueBase, this.props.valueTo);
   }
   
   render() {
     return (
       <Converter 
-        currencyBase={this.props.inverted 
-          ? this.props.currencyTo
-          : this.props.currencyBase}
-        currencyTo={this.props.inverted
-          ? this.props.currencyBase
-          : this.props.currencyTo}
-        valueBase={this.props.inverted
-          ? this.props.valueTo
-          : this.props.valueBase}
-        valueTo={this.props.inverted 
-          ? this.props.valueBase 
-          : this.props.valueTo}
-        onChange={this.props.inverted 
-          ? this.handleExchangeInverted.bind(this)
-          : this.handleExchange.bind(this)}
+        currencyBase={this.props.currencyBase}
+        currencyTo={this.props.currencyTo}
+        valueBase={this.props.valueBase}
+        valueTo={this.props.valueTo}
+        onChange={this.handleExchange.bind(this)}
         onReverse={this.handleInvert.bind(this)}
         openCurrencyList={this.props.openCurrencyList}
       />
@@ -69,8 +49,11 @@ export default connect(
     valueTo: state.converter.valueTo,
   }),
   dispatch => ({
-    onHandleInvert: (state) => {
-      dispatch(actions.invertConverter(state))
+    onHandleInvert: (state, currencyBase, currencyTo, valueBase, valueTo) => {
+      dispatch(actions.invertConverter(state, currencyBase, currencyTo, valueBase, valueTo))
+    },
+    onHandleExchange: (valueBase, valueTo) => {
+      dispatch(actions.exchange(valueBase, valueTo))
     },
   })
 )(Exchanger)

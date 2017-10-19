@@ -22,6 +22,9 @@
   &:last-of-type {
     margin-bottom: 0;
   }
+  & * {
+    pointer-events: none;
+  }
   & > span {
     font-size: 26px;
     &:first-of-type {

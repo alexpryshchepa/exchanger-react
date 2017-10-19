@@ -9,7 +9,12 @@ export default function Presets (props) {
       {
         props.presets.map((item, index) => {
           return (
-            <button className={styles.item} key={index}>
+            <button 
+              className={styles.item}
+              key={index}
+              data-currfrom={item.currFrom}
+              data-currto={item.currTo}
+              onClick={props.changePreset} >
               <span>{item.currFrom}</span>
               <svg data-svg="arrows" xmlns="http://www.w3.org/2000/svg" viewBox="152.774 303.53 16.961 16.961">
                 <g transform="translate(152.774 274.235)">

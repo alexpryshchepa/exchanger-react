@@ -42,6 +42,17 @@ export default function converter (state = initialState, action) {
       return {
         ...state,
         inverted: action.inverted,
+        currencyBase: action.currencyTo,
+        currencyTo: action.currencyBase,
+        valueBase: action.valueTo,
+        valueTo: action.valueBase,
+      }
+      break
+    case 'EXCHANGE':
+      return {
+        ...state,
+        valueBase: action.valueBase,
+        valueTo: action.valueTo,
       }
       break
     default:
