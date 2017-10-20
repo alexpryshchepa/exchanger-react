@@ -8,7 +8,9 @@ export default function Input (props) {
       <input 
         className={styles.input} 
         type='number'
+        pattern='[0-9]*'
         value={props.value}
+        step='10'
         onChange={props.onChange}
         readOnly={props.readonly ? true : false} />
       <button 

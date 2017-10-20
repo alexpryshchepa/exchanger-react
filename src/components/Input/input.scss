@@ -3,7 +3,7 @@
 .root {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: baseline;
 }
 
 .input {
@@ -12,8 +12,6 @@
   background: none;
   text-align: right;
   font-size: 52px;
-  line-height: 52px;
-  height: 52px;
   color: $font-color-primary;
   &::-webkit-input-placeholder {
     color: $font-color-primary;
@@ -53,8 +51,6 @@
 .button {
   background: none;
   font-size: 26px;
-  line-height: 26px;
-  height: 26px;
   margin-left: 10px;
 }
 

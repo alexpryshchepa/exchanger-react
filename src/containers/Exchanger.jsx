@@ -10,10 +10,12 @@ class Exchanger extends Component {
   handleExchange (e) {
     let valueBase, valueTo;
     if (this.props.inverted) {
-      valueBase = Number(e.target.value);
-      valueTo = Math.round((e.target.value / this.props.rates[this.props.currencyBase]) * 100) / 100;
+      const currencyTo = this.props.rates[this.props.currencyTo] ? this.props.rates[this.props.currencyTo] : 1;
+      
+      valueBase = String(e.target.value);
+      valueTo = Math.round((e.target.value / this.props.rates[this.props.currencyBase] * currencyTo) * 100) / 100;
     } else {
-      valueBase = Number(e.target.value);
+      valueBase = String(e.target.value);
       valueTo = Math.round((e.target.value * this.props.rates[this.props.currencyTo]) * 100) / 100;
     }
     this.props.onHandleExchange(valueBase, valueTo)

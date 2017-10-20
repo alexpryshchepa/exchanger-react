@@ -1,3 +1,4 @@
+import webpack from 'webpack';
 import {
   paths
 } from './gulpfile.babel.js/config';
@@ -31,6 +32,10 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin(paths.stylesheets.dist),
+//    new webpack.DefinePlugin({
+//      'process.env.NODE_ENV': JSON.stringify('production'),
+//    }),
+//    new webpack.optimize.UglifyJsPlugin(),
   ],
   resolve: {
     modules: ['node_modules', 'src'],

@@ -39,15 +39,17 @@ class App extends Component {
     })
      
     let value;
-     
-    for (let key in this.props.rates) {
-      if (e.target.innerText === key) value = this.props.rates[key]
-    }
     
     if (this.props.inverted) {
-      this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, this.props.currencyTo, Math.round(value / this.props.valueBase * 100) / 100);
+      value = this.props.rates[this.props.currencyBase];
+      
+      this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, this.props.currencyTo, Math.round((this.props.valueBase / value * this.props.rates[e.target.innerText]) * 100) / 100);
     } else {
-      this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, this.props.currencyTo, Math.round(value * this.props.valueBase * 100) / 100);
+      for (let key in this.props.rates) {
+        if (e.target.innerText === key) value = this.props.rates[key]
+      }
+      
+      this.props.onChangeCurrency(e.target.dataset.meaning, e.target.innerText, this.props.currencyTo, Math.round((value * this.props.valueBase) * 100) / 100);
     }
   }
   
@@ -89,6 +91,7 @@ export default connect(
     names: state.converter.names,
     rates: state.converter.rates,
     valueBase: state.converter.valueBase,
+    currencyBase: state.converter.currencyBase,
     currencyTo: state.converter.currencyTo,
     inverted: state.converter.inverted,
   }),
